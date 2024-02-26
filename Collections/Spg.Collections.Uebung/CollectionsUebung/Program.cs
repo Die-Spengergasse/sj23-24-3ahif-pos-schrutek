@@ -15,7 +15,8 @@ namespace ExCollection.App
 
         // TODO: Erstelle ein Property Schuelers, welches alle Schüler der Klasse in einer
         //       Liste speichert.
-        public IReadOnlyList<Schueler> Schuelers { get; set; } = new List<Schueler>();
+        private List<Schueler> _schuelerList = new();
+        public IReadOnlyList<Schueler> Schuelers => _schuelerList;
 
         public string Name { get; private set; }
         public string KV { get; private set; }
@@ -33,7 +34,7 @@ namespace ExCollection.App
                 {
                     throw new KeyNotFoundException("Schüler ist bereits vorhanden!");
                 }
-                Schuelers.Add(s);
+                _schuelerList.Add(s);
                 s.KlasseNavigation = this;
             }
             else
@@ -50,7 +51,7 @@ namespace ExCollection.App
                 {
                     throw new KeyNotFoundException("Schüler nicht vorhanden!");
                 }
-                Schuelers.Remove(s);
+                _schuelerList.Remove(s);
             }
             else
             {
@@ -147,7 +148,7 @@ namespace ExCollection.App
 
 
 
-            klassen["3BHIF"].Schuelers.Add(new Schueler() { Id = 4711, Vorname = "asdasd", Zuname = "qweqwe" });
+            klassen["3BHIF"].AddSchueler(new Schueler() { Id = 4711, Vorname = "asdasd", Zuname = "qweqwe" });
 
 
 

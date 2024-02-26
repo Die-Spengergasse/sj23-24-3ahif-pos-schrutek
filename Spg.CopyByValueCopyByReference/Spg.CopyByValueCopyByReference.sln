@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spg.LambdaDemo", "Spg.LambdaDemo\Spg.LambdaDemo.csproj", "{869E3F77-02BB-4474-99CD-E4EB2B7D3365}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spg.CopyByValueCopyByReference", "Spg.CopyByValueCopyByReference\Spg.CopyByValueCopyByReference.csproj", "{0B1C12B1-63A1-4EC6-8B1B-5141D1D12746}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{869E3F77-02BB-4474-99CD-E4EB2B7D3365}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{869E3F77-02BB-4474-99CD-E4EB2B7D3365}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{869E3F77-02BB-4474-99CD-E4EB2B7D3365}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{869E3F77-02BB-4474-99CD-E4EB2B7D3365}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B1C12B1-63A1-4EC6-8B1B-5141D1D12746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B1C12B1-63A1-4EC6-8B1B-5141D1D12746}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B1C12B1-63A1-4EC6-8B1B-5141D1D12746}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B1C12B1-63A1-4EC6-8B1B-5141D1D12746}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5082959E-4CFF-455A-A0CE-FAEA9270AE1F}
+		SolutionGuid = {8C3A359B-53B6-455E-B7F7-6F8DBC40C709}
 	EndGlobalSection
 EndGlobal
