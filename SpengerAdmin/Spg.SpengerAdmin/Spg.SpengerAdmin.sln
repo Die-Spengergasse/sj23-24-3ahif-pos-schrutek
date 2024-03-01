@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E1B23D97-3347-4EC9-8A27-D4B170038012}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spg.SpengerAdmin.DomainModel", "src\Spg.SpengerAdmin.DomainModel\Spg.SpengerAdmin.DomainModel.csproj", "{381A4FF7-4818-478C-A051-11584DFCC928}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spg.SpengerAdmin.Infrastructure", "src\Spg.SpengerAdmin.Infrastructure\Spg.SpengerAdmin.Infrastructure.csproj", "{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{381A4FF7-4818-478C-A051-11584DFCC928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{381A4FF7-4818-478C-A051-11584DFCC928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{381A4FF7-4818-478C-A051-11584DFCC928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{381A4FF7-4818-478C-A051-11584DFCC928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{381A4FF7-4818-478C-A051-11584DFCC928} = {E1B23D97-3347-4EC9-8A27-D4B170038012}
+		{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4} = {E1B23D97-3347-4EC9-8A27-D4B170038012}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0604DA8A-E219-4BB4-8E1D-97776788FEA2}
+	EndGlobalSection
+EndGlobal
