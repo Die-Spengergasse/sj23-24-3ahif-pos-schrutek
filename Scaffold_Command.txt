@@ -1,0 +1,1 @@
+Scaffold-DbContext "Data Source=C:\HTL\Unterricht\SJ2324\3AHIF\sj23-24-3ahif-pos-schrutek\SpengerAdmin\Spg.SpengerAdmin\test\Spg.SpengerAdmin.DomainModelTest\bin\Debug\net8.0\SpengerAdmin.db Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models

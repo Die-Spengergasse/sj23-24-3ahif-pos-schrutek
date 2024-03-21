@@ -2,6 +2,9 @@
 {
     public class Teacher : Person
     {
+        protected Teacher()
+            : base()
+        { }
         public Teacher(
             Genders gender, string firstName, string lastName,
             DateTime birthDate, string eMailAddress,

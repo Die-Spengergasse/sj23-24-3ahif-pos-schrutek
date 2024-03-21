@@ -4,6 +4,8 @@
 
     public abstract class Person
     {
+        protected Person()
+        { }
         public Person(
             Genders gender, string firstName, string lastName, 
             DateTime birthDate, string eMailAddress, 
@@ -17,7 +19,7 @@
             Address = address;
         }
 
-        public int Id { get; }
+        public int Id { get; private set; }
         public Genders Gender { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
@@ -26,5 +28,7 @@
         public Address Address { get; set; } = default!;
         public string? Occupation { get; set; } = string.Empty;
         public string? Handicap { get; set; }
+
+        public string GreetingLabel => $"{FirstName} {LastName}";
     }
 }

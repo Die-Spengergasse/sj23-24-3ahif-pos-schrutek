@@ -7,7 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E1B23D97-334
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spg.SpengerAdmin.DomainModel", "src\Spg.SpengerAdmin.DomainModel\Spg.SpengerAdmin.DomainModel.csproj", "{381A4FF7-4818-478C-A051-11584DFCC928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spg.SpengerAdmin.Infrastructure", "src\Spg.SpengerAdmin.Infrastructure\Spg.SpengerAdmin.Infrastructure.csproj", "{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spg.SpengerAdmin.Infrastructure", "src\Spg.SpengerAdmin.Infrastructure\Spg.SpengerAdmin.Infrastructure.csproj", "{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F9EACFBF-B693-4D52-960F-A468E8436C94}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spg.SpengerAdmin.DomainModelTest", "test\Spg.SpengerAdmin.DomainModelTest\Spg.SpengerAdmin.DomainModelTest.csproj", "{977FE9C1-17F1-4A86-A74A-B128CF7B823C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spg.SpengerAdmin.DomainModelDb", "src\Spg.SpengerAdmin.DomainModelDb\Spg.SpengerAdmin.DomainModelDb.csproj", "{DA1815AB-68B1-4410-9FD7-906870E0BFEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +29,14 @@ Global
 		{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{977FE9C1-17F1-4A86-A74A-B128CF7B823C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{977FE9C1-17F1-4A86-A74A-B128CF7B823C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{977FE9C1-17F1-4A86-A74A-B128CF7B823C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{977FE9C1-17F1-4A86-A74A-B128CF7B823C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1815AB-68B1-4410-9FD7-906870E0BFEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1815AB-68B1-4410-9FD7-906870E0BFEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1815AB-68B1-4410-9FD7-906870E0BFEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1815AB-68B1-4410-9FD7-906870E0BFEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,6 +44,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{381A4FF7-4818-478C-A051-11584DFCC928} = {E1B23D97-3347-4EC9-8A27-D4B170038012}
 		{C6808F6A-FC74-4E1E-8552-1DC0C296B9A4} = {E1B23D97-3347-4EC9-8A27-D4B170038012}
+		{977FE9C1-17F1-4A86-A74A-B128CF7B823C} = {F9EACFBF-B693-4D52-960F-A468E8436C94}
+		{DA1815AB-68B1-4410-9FD7-906870E0BFEC} = {E1B23D97-3347-4EC9-8A27-D4B170038012}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0604DA8A-E219-4BB4-8E1D-97776788FEA2}

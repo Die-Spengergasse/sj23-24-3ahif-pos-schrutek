@@ -2,6 +2,9 @@
 {
     public class Student : Person
     {
+        protected Student()
+            : base()
+        { }
         public Student(
             Genders gender, string firstName, string lastName,
             DateTime birthDate, string eMailAddress,
@@ -9,7 +12,7 @@
             : base(gender, firstName, lastName, birthDate, eMailAddress, address)
         { }
 
-        public ClassRoom ClassRoomNavigation 
+        public ClassRoom ClassRoomNavigation
         {
             get { return _classRoomNavigation; }
             set 
@@ -26,4 +29,3 @@
         public IReadOnlyList<Subject> Subjects => _subjects;
     }
 }
-0

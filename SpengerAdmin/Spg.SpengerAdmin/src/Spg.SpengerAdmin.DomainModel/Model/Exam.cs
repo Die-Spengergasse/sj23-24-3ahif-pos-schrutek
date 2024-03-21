@@ -13,7 +13,7 @@
         /// </example>
         /// <exception cref="ArgumentNullException">Wird geworfen, wenn der Parameter <code>null</code> ist.</exception>
         /// <see cref="ClassRoom"/>
-        public int Id { get; }
+        public int Id { get; private set; }
         /// <summary>
         /// Note
         /// </summary>

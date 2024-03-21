@@ -4,7 +4,7 @@
     {
         // Id ... P.K. ; int/long ... Auto Increment (Convention over Configuration)
         // ID kommt IMMER aus der DB.
-        public int Id { get; }
+        public int Id { get; private set; }
         public string Number { get; set; } = string.Empty;
         public int TableCount { get; set; }
         public int LockersCount { get; set; }
