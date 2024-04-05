@@ -56,6 +56,11 @@ entity Subject {
     + Name: string
 }
 
+entity StudentSubject {
+    + StudentNavigation: Student
+    + SubjectNavigation: Subject
+}
+
 enum Genders {
     MALE
     FEMAL
@@ -70,10 +75,11 @@ class Address << (V,#FF7700) Embeddable >> {
 }
 
 ClassRoom "1" o--> "0..n" Student
-Student "0" o--> "0..n" Subject
+Student "1" o--> "0..n" StudentSubject
+Subject "0" o--> "0..n" StudentSubject
 Subject "0" o--> "0..n" Exam
-Teacher "1" o-left-> "0..n" Exam
-ClassRoom "0" o--> "0..n" Exam
+Teacher "1" o--> "0..n" Exam
+ClassRoom "0" o-left-> "0..n" Exam
 
 Genders .right. Person
 

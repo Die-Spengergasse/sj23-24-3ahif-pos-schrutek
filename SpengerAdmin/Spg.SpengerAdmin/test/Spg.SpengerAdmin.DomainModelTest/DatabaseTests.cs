@@ -10,7 +10,7 @@ namespace Spg.SpengerAdmin.DomainModelTest
         {
             // Arrange
             DbContextOptions options = new DbContextOptionsBuilder()
-                .UseSqlite("Data Source = SpengerAdmin.db")
+                .UseSqlite("Data Source = .\\..\\..\\..\\..\\..\\SpengerAdmin.db")
                 .Options;
 
             SpengerContext db = new SpengerContext(options);
@@ -18,6 +18,8 @@ namespace Spg.SpengerAdmin.DomainModelTest
             
             // Act
             db.Database.EnsureCreated();
+            SeedService seedService = new SeedService(db);
+            seedService.Seed();
 
             // Assert
             Assert.True(true);

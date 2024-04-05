@@ -1,4 +1,7 @@
-﻿namespace Spg.SpengerAdmin.DomainModel.Model
+﻿using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+
+namespace Spg.SpengerAdmin.DomainModel.Model
 {
     public class Student : Person
     {
@@ -6,26 +9,46 @@
             : base()
         { }
         public Student(
-            Genders gender, string firstName, string lastName,
+            Genders gender, string username, string firstName, string lastName,
             DateTime birthDate, string eMailAddress,
             Address address)
             : base(gender, firstName, lastName, birthDate, eMailAddress, address)
-        { }
-
-        public ClassRoom ClassRoomNavigation
         {
-            get { return _classRoomNavigation; }
-            set 
-            {
-                if (value is not null)
-                {
-                    _classRoomNavigation = value;
-                }
-            }
+            Username = username;
         }
-        private ClassRoom _classRoomNavigation;
+        public Student(Student student, ClassRoom classroom)
+            : base(student.Gender, student.FirstName, student.LastName, 
+                  student.BirthDate, student.EMailAddress, student.Address)
+        {
+            Username = student.Username;
+            ClassRoomNavigation = classroom;
+        }
 
-        private List<Subject> _subjects = new();
-        public IReadOnlyList<Subject> Subjects => _subjects;
+        public string Username { get; private set; }
+        public ClassRoom ClassRoomNavigation { get; set; }
+
+        private List<StudentSubject> _sudentSubjects = new();
+        public IReadOnlyList<StudentSubject> StudentSubjects => _sudentSubjects;
+
+        //public Student AddSubject(Subject subject)
+        //{
+        //    if (subject is not null)
+        //    {
+        //        subject.StudentNavigation = this;
+        //        _subjects.Add(subject);
+        //    }
+        //    return this;
+        //}
+
+        //public Student AddSubjects(IEnumerable<Subject> subjects)
+        //{
+        //    _subjects.AddRange(
+        //        subjects
+        //            .Where(s => s is not null)
+        //                .Select(s => new Subject(s, this)
+        //            )
+        //        );
+        //    return this;
+        //}
     }
 }

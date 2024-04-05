@@ -9,13 +9,23 @@ namespace Spg.SpengerAdmin.Infrastructure
     // 3. Konstruktoren, OK
     // 4. Konfiguration (wo (ConnectionString) ist meine DB und was (Provider/Driver) ist meine DB), OK
     // 5. Fluent API
+
+    // Inspirations:
+    // * Inheritance Mapping:
+    // https://learn.microsoft.com/en-us/ef/core/modeling/inheritance
+    // * N + 1 - Problem:
+    // https://www.thinktecture.com/entity-framework-core/entity-framework-core7-n1-queries-problem/
+    // https://medium.com/@pawel.gerr/entity-framework-core-2-0-performance-beware-of-n-1-queries-be4598701871
+
     public class SpengerContext : DbContext
     {
         public DbSet<ClassRoom> ClassRooms => Set<ClassRoom>();
+        public DbSet<MeetingRoom> MeetingRooms => Set<MeetingRoom>();
         public DbSet<Student> Students => Set<Student>();
         public DbSet<Teacher> Teachers => Set<Teacher>();
         public DbSet<Subject> Subjects => Set<Subject>();
         public DbSet<Exam> Exams => Set<Exam>();
+        public DbSet<StudentSubject> StudentSubjects => Set<StudentSubject>();
 
         public SpengerContext()
             : base()
@@ -53,6 +63,9 @@ namespace Spg.SpengerAdmin.Infrastructure
 
             //modelBuilder
             //    .Entity<Teacher>().HasKey(p => new { p.FirstName, p.LastName });
+
+            modelBuilder.Entity<Room>()
+                .HasDiscriminator<string>("RoomType");
         }
     }
 }
