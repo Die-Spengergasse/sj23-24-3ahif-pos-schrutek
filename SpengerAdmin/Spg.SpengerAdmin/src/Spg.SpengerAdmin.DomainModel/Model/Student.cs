@@ -3,7 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Spg.SpengerAdmin.DomainModel.Model
 {
-    public class Student : Person
+    public partial class Student : Person
     {
         protected Student()
             : base()
@@ -25,7 +25,7 @@ namespace Spg.SpengerAdmin.DomainModel.Model
         }
 
         public string Username { get; private set; }
-        public ClassRoom ClassRoomNavigation { get; set; }
+        public ClassRoom ClassRoomNavigation { get; set; } = default!;
 
         private List<StudentSubject> _sudentSubjects = new();
         public IReadOnlyList<StudentSubject> StudentSubjects => _sudentSubjects;

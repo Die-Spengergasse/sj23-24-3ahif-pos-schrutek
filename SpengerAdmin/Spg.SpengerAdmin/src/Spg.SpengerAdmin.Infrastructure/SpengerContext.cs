@@ -11,11 +11,18 @@ namespace Spg.SpengerAdmin.Infrastructure
     // 5. Fluent API
 
     // Inspirations:
-    // * Inheritance Mapping:
-    // https://learn.microsoft.com/en-us/ef/core/modeling/inheritance
     // * N + 1 - Problem:
     // https://www.thinktecture.com/entity-framework-core/entity-framework-core7-n1-queries-problem/
     // https://medium.com/@pawel.gerr/entity-framework-core-2-0-performance-beware-of-n-1-queries-be4598701871
+    //
+    // * 1..n mapping:
+    // https://learn.microsoft.com/en-us/ef/core/modeling/relationships/one-to-many
+    // * n..n mapping:
+    // https://learn.microsoft.com/en-us/ef/core/modeling/relationships/many-to-many
+    // * inheritance mapping:
+    // https://learn.microsoft.com/en-us/ef/core/modeling/inheritance
+    // * Value Objects
+    // https://learn.microsoft.com/en-us/ef/core/modeling/owned-entities#collections-of-owned-types
 
     public class SpengerContext : DbContext
     {
@@ -47,25 +54,22 @@ namespace Spg.SpengerAdmin.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder
-            //    .Entity<ClassRoom>()
-            //    .HasKey(c => c.Id)
-            //    .HasName(nameof(ClassRoom))
-            //    .IsClustered();
-
             modelBuilder
                 .Entity<Student>()
-                .OwnsOne(p => p.Address);
+                .OwnsOne(s => s.Address);
 
             modelBuilder
                 .Entity<Teacher>()
-                .OwnsOne(p => p.Address);
+                .OwnsOne(t => t.Address);
 
-            //modelBuilder
-            //    .Entity<Teacher>().HasKey(p => new { p.FirstName, p.LastName });
+            modelBuilder
+                .Entity<StudentSubject>()
+                .HasKey(s => new { s.StudentId, s.SubjectId });
 
             modelBuilder.Entity<Room>()
                 .HasDiscriminator<string>("RoomType");
+
+            modelBuilder.Entity<Country>().OwnsOne(c => c.Address);
         }
     }
 }

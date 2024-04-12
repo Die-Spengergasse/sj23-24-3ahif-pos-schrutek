@@ -1,10 +1,12 @@
 ﻿namespace Spg.SpengerAdmin.DomainModel.Model
 {
-    public class ClassRoom : Room
+    public partial class ClassRoom : Room
     {
         protected ClassRoom()
         { }
-        public ClassRoom(string number, int tableCount, int lockersCount, int level, string building)
+        public ClassRoom(
+            string number, int tableCount,
+            int lockersCount, int level, string building)
             : base(number, tableCount, lockersCount, level, building)
         { }
 

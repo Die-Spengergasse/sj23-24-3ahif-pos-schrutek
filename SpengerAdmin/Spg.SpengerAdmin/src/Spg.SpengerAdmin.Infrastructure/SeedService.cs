@@ -110,7 +110,9 @@ namespace Spg.SpengerAdmin.Infrastructure
             {
                 s.FinalGrade = f.Random.Int(1, 5).OrNull(f, 0.5F);
             })
-            .Generate(1000);
+            .Generate(1000)
+            .GroupBy(t => new { StudentId = t.StudentNavigation.Id, SubjectId = t.SubjectNavigation.Id })
+            .Select(g => g.First());
             _db.StudentSubjects.AddRange(studentSubjects);
             _db.SaveChanges();
         }
