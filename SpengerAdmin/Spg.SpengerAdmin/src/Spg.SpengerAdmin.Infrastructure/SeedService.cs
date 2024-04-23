@@ -1,6 +1,5 @@
 ﻿using Bogus;
 using Spg.SpengerAdmin.DomainModel.Model;
-using Person = Spg.SpengerAdmin.DomainModel.Model.Person;
 
 namespace Spg.SpengerAdmin.Infrastructure
 {
@@ -18,49 +17,14 @@ namespace Spg.SpengerAdmin.Infrastructure
             var availableSubjects = new string[] { "D", "E", "AM", "POS", "DBI", "RK", "RISL", "PRE", "NVS", "BWM", "NSCS", "SOPK", "WMC", "ETH", "BESP", "GGP", "NW" };
             var buildings = new string[] { "A", "B", "C", "D", };
 
-            var classRooms = new Faker<ClassRoom>().CustomInstantiator(f =>
+            var classRooms = new Faker<ClassRoom>().CustomInstantiator(ClassRoom.Seed)
+            .Rules((f, c) => 
             {
-                string building = f.Random.ArrayElement(buildings);
-                return new ClassRoom(
-                    $"{building}{f.Random.Int(1, 5)}.{f.Random.Int(0, 20).ToString().PadLeft(3, '0')}",
-                    f.Random.Int(1, 20),
-                    f.Random.Int(1, 20),
-                    f.Random.Int(1, 5),
-                    building);
-            }).Rules((f, c) =>
-            {
-                c.AddStudents(new Faker<Student>().CustomInstantiator(f =>
-                {
-                    Genders gender = f.Random.Enum<Genders>();
-                    string firstName = f.Name.FirstName(Bogus.DataSets.Name.Gender.Female);
-                    switch (gender)
-                    {
-                        case Genders.MALE:
-                            firstName = f.Name.FirstName(Bogus.DataSets.Name.Gender.Male);
-                            break;
-                        case Genders.DIVERS:
-                        case Genders.OTHER:
-                            firstName = f.Name.FirstName(f.Random.Enum<Bogus.DataSets.Name.Gender>());
-                            break;
-                    }
-                    return new Student(
-                        gender,
-                        $"{firstName.ToLower()}{f.Random.Int(1000, 9999)}",
-                        firstName,
-                        f.Name.LastName(),
-                        f.Date.Between(new DateTime(1950, 01, 01), new DateTime(2010, 01, 01)),
-                        f.Internet.Email(),
-                        new Address(
-                            f.Address.StreetName(),
-                            f.Address.BuildingNumber(),
-                            f.Address.City(),
-                            f.Address.ZipCode()));
-                }).Rules((f, s) =>
-                {
-                })
-                .Generate(f.Random.Int(15, 30)));
+                c.AddStudents(new Faker<Student>()
+                    .CustomInstantiator(f => f.GenerateStudent(true))
+                    .Generate(f.Random.Int(15, 30)));
             })
-            .Generate(150);
+            .Generate(20);
             _db.ClassRooms.AddRange(classRooms);
             _db.SaveChanges();
 
@@ -79,6 +43,7 @@ namespace Spg.SpengerAdmin.Infrastructure
                         break;
                 }
                 return new Teacher(
+                    f.Random.Guid(),
                     gender,
                     firstName,
                     f.Name.LastName(),
@@ -110,10 +75,22 @@ namespace Spg.SpengerAdmin.Infrastructure
             {
                 s.FinalGrade = f.Random.Int(1, 5).OrNull(f, 0.5F);
             })
-            .Generate(1000)
+            .Generate(600)
             .GroupBy(t => new { StudentId = t.StudentNavigation.Id, SubjectId = t.SubjectNavigation.Id })
             .Select(g => g.First());
             _db.StudentSubjects.AddRange(studentSubjects);
+            _db.SaveChanges();
+
+
+            var exams = new Faker<Exam>().CustomInstantiator(f => 
+            {
+                return f.GenerateExams(
+                    f.Random.ListItem(_db.ClassRooms.ToList()), 
+                    f.Random.ListItem(_db.Teachers.ToList()), 
+                    f.Random.ListItem(_db.Subjects.ToList()));
+            })
+            .Generate(2400);
+            _db.Exams.AddRange(exams);
             _db.SaveChanges();
         }
     }

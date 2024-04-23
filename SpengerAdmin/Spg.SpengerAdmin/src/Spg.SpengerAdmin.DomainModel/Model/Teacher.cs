@@ -5,11 +5,11 @@
         protected Teacher()
             : base()
         { }
-        public Teacher(
+        public Teacher(Guid guid,
             Genders gender, string firstName, string lastName,
             DateTime birthDate, string eMailAddress,
             Address address, decimal income)
-            : base(gender, firstName, lastName, birthDate, eMailAddress, address)
+            : base(guid,gender, firstName, lastName, birthDate, eMailAddress, address)
         {
             Income = income;
         }

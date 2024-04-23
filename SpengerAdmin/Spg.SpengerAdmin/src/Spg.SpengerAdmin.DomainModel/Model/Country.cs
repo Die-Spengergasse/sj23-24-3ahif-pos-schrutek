@@ -17,10 +17,10 @@ namespace Spg.SpengerAdmin.DomainModel.Model
         public Country(string name, Address address)
         {
             Name = name;
-            Address = address;
+            AddressNavigation = address;
         }
         public int Id { get; }
         public string Name { get; set; } = string.Empty;
-        public Address Address { get; set; }
+        public Address AddressNavigation { get; set; }
     }
 }

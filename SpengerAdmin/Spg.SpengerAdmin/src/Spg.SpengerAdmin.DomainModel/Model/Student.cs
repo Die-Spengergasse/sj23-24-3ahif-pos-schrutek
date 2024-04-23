@@ -8,16 +8,16 @@ namespace Spg.SpengerAdmin.DomainModel.Model
         protected Student()
             : base()
         { }
-        public Student(
+        public Student(Guid guid,
             Genders gender, string username, string firstName, string lastName,
             DateTime birthDate, string eMailAddress,
             Address address)
-            : base(gender, firstName, lastName, birthDate, eMailAddress, address)
+            : base(guid, gender, firstName, lastName, birthDate, eMailAddress, address)
         {
             Username = username;
         }
         public Student(Student student, ClassRoom classroom)
-            : base(student.Gender, student.FirstName, student.LastName, 
+            : base(student.Guid, student.Gender, student.FirstName, student.LastName, 
                   student.BirthDate, student.EMailAddress, student.Address)
         {
             Username = student.Username;
@@ -25,6 +25,7 @@ namespace Spg.SpengerAdmin.DomainModel.Model
         }
 
         public string Username { get; private set; }
+        public int ClassRoomNavigationId { get; set; }
         public ClassRoom ClassRoomNavigation { get; set; } = default!;
 
         private List<StudentSubject> _sudentSubjects = new();

@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Spg.SpengerAdmin.DomainModel.Model;
+using Spg.SpengerAdmin.Infrastructure.Configurations;
+using System.Reflection;
 
 namespace Spg.SpengerAdmin.Infrastructure
 {
@@ -26,6 +28,9 @@ namespace Spg.SpengerAdmin.Infrastructure
 
     public class SpengerContext : DbContext
     {
+        private string myField;
+
+
         public DbSet<ClassRoom> ClassRooms => Set<ClassRoom>();
         public DbSet<MeetingRoom> MeetingRooms => Set<MeetingRoom>();
         public DbSet<Student> Students => Set<Student>();
@@ -48,28 +53,18 @@ namespace Spg.SpengerAdmin.Infrastructure
 
         /// <summary>
         /// Fluent-API
+        /// https://learn.microsoft.com/en-us/ef/core/modeling/data-seeding
         /// </summary>
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder
-                .Entity<Student>()
-                .OwnsOne(s => s.Address);
-
-            modelBuilder
-                .Entity<Teacher>()
-                .OwnsOne(t => t.Address);
-
-            modelBuilder
-                .Entity<StudentSubject>()
-                .HasKey(s => new { s.StudentId, s.SubjectId });
-
-            modelBuilder.Entity<Room>()
-                .HasDiscriminator<string>("RoomType");
-
-            modelBuilder.Entity<Country>().OwnsOne(c => c.Address);
+            
+            modelBuilder.ApplyConfiguration(new StudentConfiguration());
+            modelBuilder.ApplyConfiguration(new SubjectConfiguration());
+            modelBuilder.ApplyConfiguration(new StudentSubjectConfiguration());
+            modelBuilder.ApplyConfiguration(new RoomConfiguration());
+            modelBuilder.ApplyConfiguration(new TeacherConfiguration());
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Spg.SpengerAdmin.DomainModelTest
 
             SpengerContext db = new SpengerContext(options);
             db.Database.EnsureDeleted();
-            
+
             // Act
             db.Database.EnsureCreated();
             SeedService seedService = new SeedService(db);

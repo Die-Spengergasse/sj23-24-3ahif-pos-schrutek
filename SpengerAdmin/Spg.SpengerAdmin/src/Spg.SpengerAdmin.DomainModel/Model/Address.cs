@@ -7,7 +7,7 @@
         string ZipCode
         )
     {
-        public List<Country> Country { get; set; }
+        //public List<Country> Country { get; set; }
 
         public override string ToString()
         {

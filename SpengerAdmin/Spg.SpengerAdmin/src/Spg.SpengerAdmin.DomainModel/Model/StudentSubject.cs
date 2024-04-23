@@ -16,6 +16,12 @@ namespace Spg.SpengerAdmin.DomainModel.Model
             SubjectNavigation = subjectNavigation;
             Lesson = lesson;
         }
+        public StudentSubject(int studentNavigationId, int subjectNavigationId, int lesson)
+        {
+            StudentId = studentNavigationId;
+            SubjectId = subjectNavigationId;
+            Lesson = lesson;
+        }
 
         //public int Id { get; private set; } // PK
         public int StudentId { get; set; }

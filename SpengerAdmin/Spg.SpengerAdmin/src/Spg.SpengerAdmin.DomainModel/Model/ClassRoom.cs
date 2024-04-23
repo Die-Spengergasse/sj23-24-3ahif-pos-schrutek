@@ -1,4 +1,6 @@
-﻿namespace Spg.SpengerAdmin.DomainModel.Model
+﻿using Bogus;
+
+namespace Spg.SpengerAdmin.DomainModel.Model
 {
     public partial class ClassRoom : Room
     {
