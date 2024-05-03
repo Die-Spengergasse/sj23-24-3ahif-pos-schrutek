@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-
-namespace Spg.SpengerAdmin.DomainModel.Model
+﻿namespace Spg.SpengerAdmin.DomainModel.Model
 {
     public partial class Student : Person
     {
@@ -31,25 +28,25 @@ namespace Spg.SpengerAdmin.DomainModel.Model
         private List<StudentSubject> _sudentSubjects = new();
         public IReadOnlyList<StudentSubject> StudentSubjects => _sudentSubjects;
 
-        //public Student AddSubject(Subject subject)
-        //{
-        //    if (subject is not null)
-        //    {
-        //        subject.StudentNavigation = this;
-        //        _subjects.Add(subject);
-        //    }
-        //    return this;
-        //}
+        public Student AddSubject(Subject subject)
+        {
+            if (subject is not null)
+            {
+                subject.StudentNavigation = this;
+                _subjects.Add(subject);
+            }
+            return this;
+        }
 
-        //public Student AddSubjects(IEnumerable<Subject> subjects)
-        //{
-        //    _subjects.AddRange(
-        //        subjects
-        //            .Where(s => s is not null)
-        //                .Select(s => new Subject(s, this)
-        //            )
-        //        );
-        //    return this;
-        //}
+        public Student AddSubjects(IEnumerable<Subject> subjects)
+        {
+            _subjects.AddRange(
+                subjects
+                    .Where(s => s is not null)
+                        .Select(s => new Subject(s, this)
+                    )
+                );
+            return this;
+        }
     }
 }

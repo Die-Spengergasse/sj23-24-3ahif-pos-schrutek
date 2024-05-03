@@ -1,0 +1,51 @@
+﻿<Window x:Class="Spg.SpengerAdmin.WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="1200">
+    <Grid Margin="10" ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <ListBox Grid.Row="1" Grid.Column="0" 
+                 ItemsSource="{ Binding Path=Students }">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>
+                            <Run Text="{Binding Path=LastName }"></Run>
+                            <Run Text="{Binding Path=FirstName }"></Run>
+                            <Run Text="{Binding Path=EMailAddress, Mode=OneWay}"></Run>
+                        </TextBlock>
+                        <Button>Delete</Button>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <ListBox Grid.Row="1" Grid.Column="1" 
+                 ItemsSource="{ Binding Path=ClassRooms }">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock>
+                            <Run Text="{Binding Path=Number}"></Run>
+                        </TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <Button Grid.Column="1" Grid.Row="3" Margin="10">OK</Button>
+    </Grid>
+</Window>
